@@ -87,12 +87,7 @@ function Send-CIPPAlert {
                             Invoke-RestMethod -Uri $webhook -Method POST -ContentType 'Application/json' -Body $JSONBody
                         }
                         '*discord.com*' {
-                           # $JSONBody = "{`"content`": `"You've setup your alert policies to be alerted whenever specific events happen. We've found some of these events in the log. $JSONContent`"}"
-                            # Invoke-RestMethod -Uri $webhook -Method POST -ContentType 'Application/json' -Body $JSONBody
-                            $body = @{
-                                content = "You've setup your alert policies to be alerted whenever specific events happen. We've found some of these events in the log. $JSONContent"
-                            }
-                            $JSONBody = ConvertTo-Json -InputObject $body -Compress -Depth 10
+                            $JSONBody = "{`"content`": `"You've setup your alert policies to be alerted whenever specific events happen. We've found some of these events in the log. $JSONContent`"}"
                             Invoke-RestMethod -Uri $webhook -Method POST -ContentType 'Application/json' -Body $JSONBody
                         }
                         '*slack.com*' {
